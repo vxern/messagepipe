@@ -2,14 +2,13 @@
   "name": "messagepipe",
   "version": "0.2.3",
   "description": "Formats message strings with number, date, plural, and select placeholders to create localized messages",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "dev": "node -r tsm dev.ts",
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:esm": "esbuild src/index.ts --minify --outfile=dist/index.esm.js --bundle --format=esm --sourcemap --define:process.env.NODE_ENV=\\\"production\\\"",
-    "build:cjs": "esbuild src/index.ts --minify --outfile=dist/index.js --bundle --format=cjs --sourcemap --define:process.env.NODE_ENV=\\\"production\\\"",
+    "build": "npm run build:esm",
+    "build:esm": "esbuild src/index.ts --minify --outfile=dist/index.js --bundle --format=esm --sourcemap --define:process.env.NODE_ENV=\\\"production\\\"",
     "declarations": "tsc --declarationDir dist --emitDeclarationOnly --declaration",
     "test": "uvu -r tsm",
     "lint": "rome check ./src/"
@@ -33,11 +32,5 @@
   },
   "files": [
     "dist"
-  ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.esm.js"
-    }
-  }
+  ]
 }
